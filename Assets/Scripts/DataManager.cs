@@ -1,11 +1,8 @@
+using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
-    public void Play(){SceneManager.LoadScene(1);}
-    public void Quit(){Application.Quit();}
     private void Awake()
     {
         if (Instance != null)
@@ -15,14 +12,34 @@ public class DataManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        LoadHighScore();
     }
-    void Start()
+    [System.Serializable]
+    class SaveData
     {
-        
+        public string name;
     }
-    void Update()
+    public void SaveHighScoreH()
     {
-        
+        SaveData data = new SaveData();
+        data.name = name;
+
+        string json = JsonUtility.ToJson(data);
+    
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
+    public void LoadHighScore()
+    {
+        string path = Application.persistentDataPath + "/savefile.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+            name = data.name;
+        }
+    }
+// --------------------------------------------------------
     
 }
