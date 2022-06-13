@@ -1,16 +1,28 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static DataManager Instance;
+    public void Play(){SceneManager.LoadScene(1);}
+    public void Quit(){Application.Quit();}
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
     }
+    
 }
