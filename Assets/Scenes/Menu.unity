@@ -217,10 +217,13 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
+      m_Calls: []
+  m_OnDidEndEdit:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 415943576}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
-        m_MethodName: Submitt
+      - m_Target: {fileID: 2021194255}
+        m_TargetAssemblyTypeName: SceneManage, Assembly-CSharp
+        m_MethodName: Name
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -230,9 +233,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnDidEndEdit:
-    m_PersistentCalls:
-      m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -366,8 +366,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 415943576}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+      - m_Target: {fileID: 2021194255}
+        m_TargetAssemblyTypeName: SceneManage, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -460,8 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ddc899ee5c015499529e7d43478676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ii: {fileID: 19412798}
-  name: NULL
+  namee: NULL
 --- !u!1 &434098746
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,8 +934,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 415943576}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+      - m_Target: {fileID: 2021194255}
+        m_TargetAssemblyTypeName: SceneManage, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
@@ -997,6 +996,7 @@ GameObject:
   - component: {fileID: 2021194253}
   - component: {fileID: 2021194252}
   - component: {fileID: 2021194251}
+  - component: {fileID: 2021194255}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1090,6 +1090,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2021194255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021194250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba045d2c25958940968aa97e64ecdde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: {fileID: 19412798}
 --- !u!1 &2041912329
 GameObject:
   m_ObjectHideFlags: 0

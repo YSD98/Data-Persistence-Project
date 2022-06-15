@@ -3,6 +3,7 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
+    public string namee = "NULL";
     private void Awake()
     {
         if (Instance != null)
@@ -13,31 +14,30 @@ public class DataManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        LoadHighScore();
     }
     [System.Serializable]
     class SaveData
     {
-        public string name;
+        public int highScore;
     }
-    public void SaveHighScoreH()
+    public void SaveHighScore()
     {
         SaveData data = new SaveData();
-        data.name = name;
+        data.highScore = MainManager.mm.m_Points;
 
         string json = JsonUtility.ToJson(data);
     
-        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/highScore.json", json);
     }
     public void LoadHighScore()
     {
-        string path = Application.persistentDataPath + "/savefile.json";
+        string path = Application.persistentDataPath + "/highScore.json";
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            name = data.name;
+            MainManager.mm.highScore = data.highScore;
         }
     }
 // --------------------------------------------------------

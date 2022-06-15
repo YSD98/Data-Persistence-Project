@@ -9,22 +9,24 @@ public class MainManager : MonoBehaviour
     public int LineCount = 6;
     public Rigidbody Ball;
 
-    public Text ScoreText;
+    public Text ScoreText, XYZ;
     public GameObject GameOverText;
     
     private bool m_Started = false;
-    private int m_Points;
+    [HideInInspector]public int m_Points,highScore;
     
     private bool m_GameOver = false;
 
     void Awake()
     {
         mm = this;
+        DataManager.Instance.LoadHighScore();
     }
     void Start()
     {
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
+        XYZ.text = $"Best Score : {highScore}";
         
         int[] pointCountArray = new [] {1,1,2,2,5,5};
         for (int i = 0; i < LineCount; ++i)
@@ -66,12 +68,15 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        ScoreText.text = $"{DataManager.Instance.namee} Score : {m_Points}";
     }
 
     public void GameOver()
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        if(m_Points > highScore)
+            DataManager.Instance.SaveHighScore();
     }
+    public void Pause(){SceneManager.LoadScene("Menu");}
 }
